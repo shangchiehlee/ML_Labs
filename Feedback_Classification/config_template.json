@@ -1,0 +1,34 @@
+{
+    "schema_version": "1.0",
+    "subscription_id": "<YOUR_SUBSCRIPTION_ID>",
+    "resource_group": "<YOUR_RESOURCE_GROUP>",
+    "workspace_name": "<YOUR_WORKSPACE_NAME>",
+    "compute_name": "<YOUR_COMPUTE_INSTANCE>",
+    "job_base_name": "feedback_sentiment_train",
+    "operational_settings": {
+        "training_timeout_seconds": 86400,
+        "batch_size": 5000,
+        "inference_n_jobs": 2,
+        "enable_json_logging": true,
+        "dry_run_rows": 2000
+    },
+    "training_hyperparameters": {
+        "n_features": 1048576,
+        "c_parameter": 1.0,
+        "epochs": 5,
+        "test_train_ratio": 0.2
+    },
+    "data_settings": {
+        "input_path": "inputs/feedback_sample_v1.csv",
+        "text_column": "Text",
+        "label_column": "Score",
+        "positive_threshold": 3
+    },
+    "output_schema_expectations": {
+        "required_columns": ["Id", "Text", "Predicted_Sentiment", "Confidence_Score"],
+        "dtypes": {
+            "Predicted_Sentiment": "int64",
+            "Confidence_Score": "float64"
+        }
+    }
+}

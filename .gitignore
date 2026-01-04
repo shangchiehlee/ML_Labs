@@ -1,0 +1,30 @@
+# Create the .gitignore content
+$gitignoreContent = @"
+# --- Security & Credentials (CRITICAL) ---
+GEMINI.md
+config.json
+.env
+.azure/
+.azureml/
+
+# --- Data Artifacts ---
+inputs/
+outputs/
+logs/
+*.csv
+*.parquet
+
+# --- Python & OS ---
+__pycache__/
+*.py[cod]
+venv/
+.vscode/
+.DS_Store
+
+# --- Allowed Templates ---
+!config_template.json
+"@
+
+# Write it to the file
+Set-Content -Path .gitignore -Value $gitignoreContent
+GEMINI.md

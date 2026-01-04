@@ -1,0 +1,39 @@
+{
+    "schema_version": "1.0",
+    "subscription_id": "<YOUR_SUBSCRIPTION_ID>",
+    "resource_group": "<YOUR_RESOURCE_GROUP>",
+    "workspace_name": "<YOUR_WORKSPACE_NAME>",
+    "compute_name": "<YOUR_COMPUTE_INSTANCE>",
+    "job_base_name": "grad_admit_train",
+    "operational_settings": {
+        "training_timeout_seconds": 86400,
+        "batch_size": 50,
+        "inference_n_jobs": 2,
+        "enable_json_logging": true,
+        "dry_run_rows": 1000
+    },
+    "training_hyperparameters": {
+        "test_train_ratio": 0.2,
+        "learning_rate": 0.01,
+        "max_iter": 1000
+    },
+    "feature_definitions": {
+        "numerical": ["GRE Score", "TOEFL Score", "University Rating", "SOP", "LOR", "CGPA", "Research"],
+        "target": "Chance of Admit"
+    },
+    "schema_expectations": {
+        "required_columns": ["GRE Score", "TOEFL Score", "University Rating", "SOP", "LOR", "CGPA", "Research", "Chance of Admit"],
+        "dtypes": {
+            "GRE Score": "int64",
+            "TOEFL Score": "int64",
+            "CGPA": "float64",
+            "Chance of Admit": "float64"
+        }
+    },
+    "output_schema_expectations": {
+        "required_columns": ["GRE Score", "Predicted Chance of Admit"],
+        "dtypes": {
+            "Predicted Chance of Admit": "float64"
+        }
+    }
+}
