@@ -1,0 +1,18 @@
+# --- Local Configuration ---
+config.json
+
+# --- Ephemeral Data Directories ---
+inputs/
+outputs/
+logs/
+downloaded_artifacts/
+
+# --- Artifacts ---
+*.joblib
+*.pkl
+*.csv
+
+# --- Python Cache ---
+**/__pycache__/
+**/*.py[cod]
+.pytest_cache/

@@ -1,0 +1,9 @@
+# Student_Success Module: Ignore Patterns
+inputs/
+outputs/
+logs/
+config.json
+**/__pycache__/
+**/*.py[cod]
+.ipynb_checkpoints/
+downloaded_artifacts/
