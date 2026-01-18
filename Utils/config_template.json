@@ -1,0 +1,12 @@
+{
+    "schema_version": "1.1",
+    "subscription_id": "<YOUR_SUBSCRIPTION_ID>",
+    "resource_group": "<YOUR_RESOURCE_GROUP>",
+    "workspace_name": "<YOUR_WORKSPACE_NAME>",
+    "compute_name": "<YOUR_COMPUTE_NAME>",
+    "job_base_name": "utils_diagnostic",
+    "operational_settings": {
+        "enable_json_logging": true,
+        "log_directory": "logs"
+    }
+}

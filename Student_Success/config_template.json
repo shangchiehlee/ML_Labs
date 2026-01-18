@@ -1,0 +1,62 @@
+{
+    "schema_version": "1.1",
+    "subscription_id": "<YOUR_SUBSCRIPTION_ID>",
+    "resource_group": "<YOUR_RESOURCE_GROUP>",
+    "workspace_name": "<YOUR_WORKSPACE_NAME>",
+    "compute_name": "<YOUR_COMPUTE_INSTANCE>",
+    "job_base_name": "student_success_prediction",
+    "operational_settings": {
+        "training_timeout_seconds": 86400,
+        "batch_size": 500,
+        "inference_n_jobs": 2,
+        "enable_json_logging": true,
+        "dry_run_rows": 1000,
+        "log_directory": "logs",
+        "data_directory": "inputs",
+        "azureml_environment": "azureml://registries/azureml/environments/sklearn-1.5/labels/latest",
+        "experiment_name": "train_model_student_success",
+        "registered_model_name": "student_success_model",
+        "disk_write_timeout_seconds": 60,
+        "scoring_float_format": "%.8f",
+        "row_size_estimate_bytes": 1024
+    },
+    "training_hyperparameters": {
+        "test_train_ratio": 0.2,
+        "learning_rate": 0.01,
+        "max_iter": 50,
+        "random_state": 42
+    },
+    "feature_definitions": {
+        "numerical": [
+            "Marital status", "Application mode", "Application order", "Course",
+            "Daytime/evening attendance", "Previous qualification", "Previous qualification (grade)",
+            "Nacionality", "Mothers qualification", "Fathers qualification",
+            "Mothers occupation", "Fathers occupation", "Admission grade", "Displaced",
+            "Educational special needs", "Debtor", "Tuition fees up to date", "Gender",
+            "Scholarship holder", "Age at enrollment", "International",
+            "Curricular units 1st sem (credited)", "Curricular units 1st sem (enrolled)",
+            "Curricular units 1st sem (evaluations)", "Curricular units 1st sem (approved)",
+            "Curricular units 1st sem (grade)", "Curricular units 1st sem (without evaluations)",
+            "Curricular units 2nd sem (credited)", "Curricular units 2nd sem (enrolled)",
+            "Curricular units 2nd sem (evaluations)", "Curricular units 2nd sem (approved)",
+            "Curricular units 2nd sem (grade)", "Curricular units 2nd sem (without evaluations)",
+            "Unemployment rate", "Inflation rate", "GDP"
+        ],
+        "target": "Target"
+    },
+    "schema_expectations": {
+        "required_columns": ["Marital status", "Course", "Admission grade", "Age at enrollment", "Target"],
+        "dtypes": {
+            "Admission grade": "float64",
+            "Age at enrollment": "int64",
+            "Target": "object"
+        }
+    },
+    "output_schema_expectations": {
+        "required_columns": ["Course", "Predicted Status", "Prediction Confidence"],
+        "dtypes": {
+            "Predicted Status": "object",
+            "Prediction Confidence": "float64"
+        }
+    }
+}

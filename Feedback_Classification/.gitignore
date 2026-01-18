@@ -1,0 +1,22 @@
+# --- Governance and Local Configuration ---
+audit_report.md
+config.json
+
+# --- Ephemeral Data Directories ---
+inputs/
+outputs/
+logs/
+downloaded_artifacts/
+
+# --- Artifacts ---
+*.csv
+*.joblib
+*.pkl
+
+# --- Python Cache ---
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# --- Build Artifacts ---
+src/scalability_utils.py
