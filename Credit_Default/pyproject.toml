@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "credit-default-prediction"
+version = "1.1.0"
+description = "Ensemble Learning Pipeline for Credit Default Prediction"
+authors = [{ name = "Shane Lee" }]
+requires-python = ">=3.9"
+dependencies = [
+    "azure-ai-ml",
+    "azure-identity",
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "joblib",
+    "mlflow",
+    "psutil",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "isort",
+    "flake8",
+    "mypy"
+]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.mypy]
+ignore_missing_imports = true

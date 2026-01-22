@@ -1,0 +1,67 @@
+{
+    "schema_version": "1.1",
+    "subscription_id": "<YOUR_SUBSCRIPTION_ID>",
+    "resource_group": "<YOUR_RESOURCE_GROUP>",
+    "workspace_name": "<YOUR_WORKSPACE_NAME>",
+    "compute_name": "<YOUR_COMPUTE_INSTANCE>",
+    "job_base_name": "credit_default_prediction",
+    "operational_settings": {
+        "training_timeout_seconds": 86400,
+        "batch_size": 50000,
+        "enable_json_logging": true,
+        "dry_run_rows": 1000,
+        "data_source_url": "https://azuremlexamples.blob.core.windows.net/datasets/credit_card/default%20of%20credit%20card%20clients.csv",
+        "log_directory": "logs"
+    },
+    "etl_settings": {
+        "retry_count": 3,
+        "backoff_seconds": 5,
+        "disk_write_timeout_seconds": 60,
+        "row_size_estimate_bytes": 1000
+    },
+    "inference_settings": {
+        "inference_n_jobs": 2,
+        "row_size_estimate_bytes": 1500
+    },
+    "training_hyperparameters": {
+        "test_train_ratio": 0.2,
+        "learning_rate": 0.1,
+        "max_iter": 100,
+        "n_estimators": 7,
+        "nystroem_components": 1200
+    },
+    "feature_definitions": {
+        "categorical": [
+            "SEX",
+            "EDUCATION",
+            "MARRIAGE"
+        ],
+        "target": "default payment next month"
+    },
+    "schema_expectations": {
+        "required_columns": [
+            "LIMIT_BAL",
+            "SEX",
+            "EDUCATION",
+            "MARRIAGE",
+            "AGE",
+            "PAY_0",
+            "BILL_AMT1",
+            "PAY_AMT1"
+        ],
+        "dtypes": {
+            "LIMIT_BAL": "float64",
+            "AGE": "int64",
+            "BILL_AMT1": "float64"
+        }
+    },
+    "output_schema_expectations": {
+        "required_columns": [
+            "LIMIT_BAL",
+            "Probability of Default"
+        ],
+        "dtypes": {
+            "Probability of Default": "float64"
+        }
+    }
+}

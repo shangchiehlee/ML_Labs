@@ -1,0 +1,46 @@
+# --- ML_Labs: Global Ignore Patterns ---
+
+# 1. Configuration (Deep Ignore)
+# Ensures that secrets are never committed regardless of module depth.
+**/config.json
+
+# 2. Ephemeral Module Data & Artifacts
+**/inputs/
+**/outputs/
+**/logs/
+**/downloaded_artifacts/
+*.joblib
+*.pkl
+*.csv
+
+# 3. Python Environment & Runtime Bytecode
+**/__pycache__/
+**/*.py[cod]
+**/*.ipynb_checkpoints/
+**/.pytest_cache/
+**/env/
+**/venv/
+.venv/
+
+# 4. OS-Specific Transient Files
+.DS_Store
+Thumbs.db
+
+# 5. Deployment Build Artifacts
+# Shared utility is injected dynamically; local copies in src/ are transient.
+src/scalability_utils.py
+
+# AI Governance and Local Config
+.agents.md
+.claude/
+.gemini/
+AGENTS.md
+AGENTS.override.md
+audit_report.md
+CLAUDE.md
+CODEX.md
+CODEX_PROJECT.md
+GEMINI.md
+instructions.md
+settings.json
+TEAM_GUIDE.md
